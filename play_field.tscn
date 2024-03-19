@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://cps4lmup6sac8"]
+
+[ext_resource type="Script" path="res://play_field.cs" id="1_ji1kw"]
+
+[node name="playField" type="Node2D"]
+script = ExtResource("1_ji1kw")
