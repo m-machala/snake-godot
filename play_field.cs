@@ -4,17 +4,17 @@ using System.Collections.Generic;
 
 public partial class play_field : Node2D
 {
-	const int _screenWidth = 32;
+	const int _screenWidth = 100;
 	public static int screenWidth {  get { return _screenWidth; } }
 	//const int _screenHeight = 16;
-	const int _screenHeight = 32;
+	const int _screenHeight = 4;
 	public static int screenHeight { get { return _screenHeight; } }
 
 	public static int score = 5;
 	public static bool isNotGameOver = true;
 	public static string currentlMovementDirectio = "RIGHT";
 	public static Random random = new Random();
-	public static Color UIcolor = Colors.Green;
+	public static Color UIcolor = Colors.Aqua;
 	public class SnakeBody
 	{
 	    public int horizontalPosition { get; set; }
@@ -62,7 +62,7 @@ public partial class play_field : Node2D
 		
 		// draw food
 		var foodTile = new Rect2(horizontalBerrySpawnPosition * tileWidth, verticalBerrySpawnPosition * tileHeight, tileWidth, tileHeight);
-		DrawRect(foodTile, UIcolor);
+		DrawRect(foodTile, Colors.Orange);
 
 		// draw snake
 		for(int i = 0; i < verticalPositionSnakeList.Count; i++) {
@@ -113,9 +113,9 @@ public partial class play_field : Node2D
     {
         public static void chooseBerryPozition()
         {
-            int spawnBerryMargin = 2;
-            play_field.horizontalBerrySpawnPosition = play_field.random.Next(0, play_field.screenWidth - spawnBerryMargin);
-            play_field.verticalBerrySpawnPosition = play_field.random.Next(0, play_field.screenHeight - spawnBerryMargin);
+            int spawnBerryMargin = 1;
+            play_field.horizontalBerrySpawnPosition = play_field.random.Next(spawnBerryMargin, play_field.screenWidth - spawnBerryMargin);
+            play_field.verticalBerrySpawnPosition = play_field.random.Next(spawnBerryMargin, play_field.screenHeight - spawnBerryMargin);
         }
 
 
