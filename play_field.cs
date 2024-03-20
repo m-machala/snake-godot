@@ -6,8 +6,8 @@ public partial class play_field : Node2D
 {
 	const int _screenWidth = 32;
 	public static int screenWidth {  get { return _screenWidth; } }
-	const int _screenHeight = 16;
-	//const int _screenHeight = 32;
+	//const int _screenHeight = 16;
+	const int _screenHeight = 32;
 	public static int screenHeight { get { return _screenHeight; } }
 
 	public static int score = 5;
@@ -73,6 +73,10 @@ public partial class play_field : Node2D
 		var headTile = new Rect2(snakePosition.horizontalPosition * tileWidth, snakePosition.verticalPosition * tileHeight, tileWidth, tileHeight);
 		DrawRect(headTile, snakePosition.snakeHeadeColor);
 
+		if(!isNotGameOver) {
+			DrawString(ThemeDB.FallbackFont, new Vector2(0, screenHeight / 2 * tileHeight - 8), "GAME OVER", HorizontalAlignment.Center, viewportSize.X);
+			DrawString(ThemeDB.FallbackFont, new Vector2(0, screenHeight / 2 * tileHeight + 8), String.Format("Score: {0}", score), HorizontalAlignment.Center, viewportSize.X);
+		}
     }
 
     public override void _Process(double delta)
@@ -86,7 +90,6 @@ public partial class play_field : Node2D
 		{
     		SnakeLogic.isSnakeOutsideBorder(snakePosition);
 
-    		//Console.ForegroundColor = UIcolor;
     		if (SnakeLogic.isSnakeOnBarry(snakePosition))
     		{
     		    score++;
@@ -95,7 +98,7 @@ public partial class play_field : Node2D
     		SnakeLogic.isSnakeIntersecting(snakePosition);
     		if (isNotGameOver == false)
     		{
-    		    //SnakeUI.drawGameOverText();
+				QueueRedraw();	
 				return;
     		}
     		SnakeLogic.addSnakeBodyPosition(snakePosition);
