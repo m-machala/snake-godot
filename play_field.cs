@@ -4,10 +4,10 @@ using System.Collections.Generic;
 
 public partial class play_field : Node2D
 {
-	const int _screenWidth = 100;
+	const int _screenWidth = 32;
 	public static int screenWidth {  get { return _screenWidth; } }
 	//const int _screenHeight = 16;
-	const int _screenHeight = 4;
+	const int _screenHeight = 32;
 	public static int screenHeight { get { return _screenHeight; } }
 
 	public static int score = 5;
